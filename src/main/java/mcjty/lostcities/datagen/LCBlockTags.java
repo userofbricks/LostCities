@@ -1,5 +1,6 @@
 package mcjty.lostcities.datagen;
 
+import com.simibubi.create.AllBlocks;
 import mcjty.lostcities.LostCities;
 import mcjty.lostcities.worldgen.LostTags;
 import net.minecraft.core.HolderLookup;
@@ -44,7 +45,7 @@ public class LCBlockTags extends BlockTagsProvider {
             }
         }
 
-        tag(LostTags.ROTATABLE_TAG).addTag(net.minecraft.tags.BlockTags.STAIRS);
+        tag(LostTags.ROTATABLE_TAG).addTag(net.minecraft.tags.BlockTags.STAIRS).add(AllBlocks.TRACK.get()).add(AllBlocks.METAL_GIRDER.get());
         tag(LostTags.NOT_BREAKABLE_TAG).add(Blocks.BEDROCK, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME, Blocks.END_GATEWAY);
     }
 

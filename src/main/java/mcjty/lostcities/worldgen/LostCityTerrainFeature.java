@@ -1,5 +1,7 @@
 package mcjty.lostcities.worldgen;
 
+import it.unimi.dsi.fastutil.Pair;
+import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
 import mcjty.lostcities.LostCities;
 import mcjty.lostcities.api.ILostCities;
 import mcjty.lostcities.api.LostCityEvent;
@@ -36,10 +38,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -533,8 +532,12 @@ public class LostCityTerrainFeature {
 //            flattenChunkToCityBorder(chunkX, chunkZ);
         }
 
-        LostCityEvent.PostGenOutsideChunkEvent postevent = new LostCityEvent.PostGenOutsideChunkEvent(provider.getWorld(), LostCities.lostCitiesImp, chunkX, chunkZ, driver.getPrimer());
+        LostCityEvent.PostGenOutsideChunkEvent postevent = new LostCityEvent.PostGenOutsideChunkEvent(provider, LostCities.lostCitiesImp, info, driver.getPrimer());
         MinecraftForge.EVENT_BUS.post(postevent);
+        if (postevent.getPart() != null) {
+            BuildingPart part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), postevent.getPart());
+            generatePart(info, part, postevent.getTransform(), 0, info.groundLevel + postevent.getGroundLevel() * FLOORHEIGHT, 0, true);
+        }
 
         generateBridges(info);
         generateHighways(chunkX, chunkZ, info);
@@ -914,6 +917,7 @@ public class LostCityTerrainFeature {
         HighwayParts highwayParts = provider.getWorldStyle().getPartSelector().highwayParts();
 
         BuildingPart part;
+        int height = -1;
         if (info.isTunnel(level)) {
             // We know we need a tunnel
             part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.tunnel(bidirectional));
@@ -921,65 +925,47 @@ public class LostCityTerrainFeature {
         } else if (info.isCity && level <= adjacent1.cityLevel && level <= adjacent2.cityLevel && adjacent1.isCity && adjacent2.isCity) {
             // Simple highway in the city
             part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.open(bidirectional));
-            int height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
-            // Clear a bit more above the highway
-            if (!info.profile.isCavern()) {
-                int clearheight = 15;
-                for (int x = 0; x < 16; x++) {
-                    for (int z = 0; z < 16; z++) {
-                        clearRange(info, x, z, height, height + clearheight, info.waterLevel > info.groundLevel,
-                                LostCityTerrainFeature::isClearableAboveHighway);
-                    }
-                }
-            }
+            height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
         } else {
             part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.bridge(bidirectional));
-            int height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
-            // Clear a bit more above the highway
-            if (!info.profile.isCavern()) {
-                int clearheight = 15;
-                for (int x = 0; x < 16; x++) {
-                    for (int z = 0; z < 16; z++) {
-                        clearRange(info, x, z, height, height + clearheight, info.waterLevel > info.groundLevel,
-                                LostCityTerrainFeature::isClearableAboveHighway);
-                    }
-                }
-            }
+            height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
         }
 
-        LostCityEvent.PostGenHighwayChunkEvent postevent = new LostCityEvent.PostGenHighwayChunkEvent(provider.getWorld(), LostCities.lostCitiesImp, info.chunkX, info.chunkZ, driver.getPrimer(), part.getId());
+        LostCityEvent.PostGenHighwayChunkEvent postevent = new LostCityEvent.PostGenHighwayChunkEvent(provider, LostCities.lostCitiesImp, info, transform, driver.getPrimer(), part.getId());
         MinecraftForge.EVENT_BUS.post(postevent);
 
         if (postevent.isChanged()) {
             part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), postevent.getNewPart().toString());
-            generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
+            height = generatePart(info, part, postevent.getTransform(), 0, highwayGroundLevel, 0, true);
         }
+        // Clear a bit more above the highway if not tunnel and a height has been set
+        if (!info.profile.isCavern() && !info.isTunnel(level) && height != -1) {
+            int clearheight = 15;
+            for (int x = 0; x < 16; x++) {
+                for (int z = 0; z < 16; z++) {
+                    clearRange(info, x, z, height, height + clearheight, info.waterLevel > info.groundLevel,
+                            LostCityTerrainFeature::isClearableAboveHighway);
+                }
+            }
+        }
+
+        List<IntIntImmutablePair> supportPoints = postevent.isCustomPoints() ? postevent.getSupportPoints() : Arrays.asList(IntIntImmutablePair.of(0,15),IntIntImmutablePair.of(0,0));
 
         Character support = part.getMetaChar(ILostCities.META_SUPPORT);
         if (info.profile.HIGHWAY_SUPPORTS && support != null) {
             BlockState sup = info.getCompiledPalette().get(support);
-            int x1 = transform.rotateX(0, 15);
-            int z1 = transform.rotateZ(0, 15);
-            driver.current(x1, highwayGroundLevel - 1, z1);
-            for (int y = 0; y < 40; y++) {
-                if (isEmpty(driver.getBlock())) {
-                    driver.block(sup);
-                } else {
-                    break;
+            for (IntIntImmutablePair cordPair : supportPoints) {
+                int x = transform.rotateX(cordPair.leftInt(), cordPair.rightInt());
+                int z = transform.rotateZ(cordPair.leftInt(), cordPair.rightInt());
+                driver.current(x, highwayGroundLevel - 1, z);
+                for (int y = 0; y < 40; y++) {
+                    if (isEmpty(driver.getBlock())) {
+                        driver.block(sup);
+                    } else {
+                        break;
+                    }
+                    driver.decY();
                 }
-                driver.decY();
-            }
-
-            int x2 = transform.rotateX(0, 0);
-            int z2 = transform.rotateZ(0, 0);
-            driver.current(x2, highwayGroundLevel - 1, z2);
-            for (int y = 0; y < 40; y++) {
-                if (isEmpty(driver.getBlock())) {
-                    driver.block(sup);
-                } else {
-                    break;
-                }
-                driver.decY();
             }
         }
     }
@@ -1434,8 +1420,12 @@ public class LostCityTerrainFeature {
                 generateStreet(info, heightmap);
             }
         }
-        LostCityEvent.PostGenCityChunkEvent postevent = new LostCityEvent.PostGenCityChunkEvent(provider.getWorld(), LostCities.lostCitiesImp, chunkX, chunkZ, driver.getPrimer());
+        LostCityEvent.PostGenCityChunkEvent postevent = new LostCityEvent.PostGenCityChunkEvent(provider, LostCities.lostCitiesImp, info, driver.getPrimer());
         MinecraftForge.EVENT_BUS.post(postevent);
+        if (postevent.getPart() != null) {
+            BuildingPart part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), postevent.getPart());
+            generatePart(info, part, postevent.getTransform(), 0, info.groundLevel + postevent.getGroundLevel() * FLOORHEIGHT, 0, true);
+        }
 
         if (info.profile.RUIN_CHANCE > 0.0) {
             generateRuins(info);
@@ -2435,6 +2425,13 @@ public class LostCityTerrainFeature {
 
                         // We don't replace the world where the part is empty (air)
                         if (b != air) {
+                            //added by Userofbricks
+                            // Start
+                            if (b.hasProperty(BlockStateProperties.WATERLOGGED) && airWaterLevel && !info.profile.AVOID_WATER && !nowater) {
+                                b.setValue(BlockStateProperties.WATERLOGGED, true);
+                            }
+                            // End
+
                             if (b == liquid) {
                                 if (info.profile.AVOID_WATER) {
                                     b = air;

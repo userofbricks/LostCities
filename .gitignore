@@ -2,3 +2,6 @@
 build/*
 .gradle/*
 .idea/*
+/run/options.txt
+/run/usercache.json
+/run/usernamecache.json

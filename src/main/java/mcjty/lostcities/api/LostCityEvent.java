@@ -1,11 +1,18 @@
 package mcjty.lostcities.api;
 
+import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
+import mcjty.lostcities.worldgen.IDimensionInfo;
+import mcjty.lostcities.worldgen.lost.BuildingInfo;
+import mcjty.lostcities.worldgen.lost.Transform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.Cancelable;
 import net.minecraftforge.eventbus.api.Event;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * LostCityEvent is fired whenever an event involving a Lost City chunk generation occurs. <br>
@@ -64,14 +71,19 @@ public class LostCityEvent extends Event {
      **/
     public static class CharacteristicsEvent extends LostCityEvent {
         private final LostChunkCharacteristics characteristics;
+        private final IDimensionInfo provider;
 
-        public CharacteristicsEvent(WorldGenLevel world, ILostCities lostCities, int chunkX, int chunkZ, LostChunkCharacteristics characteristics) {
-            super(world, lostCities, chunkX, chunkZ);
+        public CharacteristicsEvent(IDimensionInfo provider, ILostCities lostCities, int chunkX, int chunkZ, LostChunkCharacteristics characteristics) {
+            super(provider.getWorld(), lostCities, chunkX, chunkZ);
             this.characteristics = characteristics;
+            this.provider = provider;
         }
 
         public LostChunkCharacteristics getCharacteristics() {
             return characteristics;
+        }
+        public IDimensionInfo getProvider() {
+            return provider;
         }
     }
 
@@ -121,14 +133,51 @@ public class LostCityEvent extends Event {
      **/
     public static class PostGenCityChunkEvent extends LostCityEvent {
         private final ChunkAccess primer;
+        private final IDimensionInfo provider;
+        private final BuildingInfo info;
+        private String part;
+        private Transform transform = Transform.ROTATE_NONE;
+        private int groundLevel = -64;
 
-        public PostGenCityChunkEvent(WorldGenLevel world, ILostCities lostCities, int chunkX, int chunkZ, ChunkAccess primer) {
-            super(world, lostCities, chunkX, chunkZ);
+        public PostGenCityChunkEvent(IDimensionInfo provider, ILostCities lostCities, BuildingInfo info, ChunkAccess primer) {
+            super(provider.getWorld(), lostCities, info.chunkX, info.chunkZ);
             this.primer = primer;
+            this.provider = provider;
+            this.info = info;
         }
 
         public ChunkAccess getChunkAccess() {
             return primer;
+        }
+
+        public Transform getTransform() {
+            return transform;
+        }
+
+        public void setTransform(Transform newTransform) {
+            transform = newTransform;
+        }
+
+        public int getGroundLevel() {
+            return groundLevel;
+        }
+
+        public void setGroundLevel(int newGroundLevel) {
+            groundLevel = newGroundLevel;
+        }
+
+        public String getPart() {
+            return part;
+        }
+
+        public void setPart(String newPart) {
+            part = newPart;
+        }
+        public IDimensionInfo getProvider() {
+            return provider;
+        }
+        public BuildingInfo getInfo() {
+            return info;
         }
     }
 
@@ -147,14 +196,51 @@ public class LostCityEvent extends Event {
      **/
     public static class PostGenOutsideChunkEvent extends LostCityEvent {
         private final ChunkAccess primer;
+        private final IDimensionInfo provider;
+        private final BuildingInfo info;
+        private String part;
+        private Transform transform = Transform.ROTATE_NONE;
+        private int groundLevel = -64;
 
-        public PostGenOutsideChunkEvent(WorldGenLevel world, ILostCities lostCities, int chunkX, int chunkZ, ChunkAccess primer) {
-            super(world, lostCities, chunkX, chunkZ);
+        public PostGenOutsideChunkEvent(IDimensionInfo provider, ILostCities lostCities, BuildingInfo info, ChunkAccess primer) {
+            super(provider.getWorld(), lostCities, info.chunkX, info.chunkZ);
             this.primer = primer;
+            this.provider = provider;
+            this.info = info;
         }
 
         public ChunkAccess getChunkAccess() {
             return primer;
+        }
+
+        public Transform getTransform() {
+            return transform;
+        }
+
+        public void setTransform(Transform newTransform) {
+            transform = newTransform;
+        }
+
+        public int getGroundLevel() {
+            return groundLevel;
+        }
+
+        public void setGroundLevel(int newGroundLevel) {
+            groundLevel = newGroundLevel;
+        }
+
+        public String getPart() {
+            return part;
+        }
+
+        public void setPart(String newPart) {
+            part = newPart;
+        }
+        public IDimensionInfo getProvider() {
+            return provider;
+        }
+        public BuildingInfo getInfo() {
+            return info;
         }
     }
 
@@ -201,14 +287,22 @@ public class LostCityEvent extends Event {
      **/
     public static class PostGenHighwayChunkEvent extends LostCityEvent {
         private final ChunkAccess primer;
-        private ResourceLocation oldPart;
+        private final IDimensionInfo provider;
+        private final ResourceLocation oldPart;
+        private final BuildingInfo info;
+        private final List<IntIntImmutablePair> supportPoints = new ArrayList<>();
         private ResourceLocation newPart = new ResourceLocation("");
-        private boolean changed = false;
+        private boolean changed = false, customPoints = false;
 
-        public PostGenHighwayChunkEvent(WorldGenLevel world, ILostCities lostCities, int chunkX, int chunkZ, ChunkAccess primer, ResourceLocation part) {
-            super(world, lostCities, chunkX, chunkZ);
+        private Transform transform;
+
+        public PostGenHighwayChunkEvent(IDimensionInfo provider, ILostCities lostCities, BuildingInfo info, Transform transform, ChunkAccess primer, ResourceLocation part) {
+            super(provider.getWorld(), lostCities, info.chunkX, info.chunkZ);
             this.primer = primer;
             this.oldPart = part;
+            this.provider = provider;
+            this.transform = transform;
+            this.info = info;
         }
 
         public ChunkAccess getChunkAccess() {
@@ -218,7 +312,7 @@ public class LostCityEvent extends Event {
         public ResourceLocation getPart() {
             return oldPart;
         }
-        public ResourceLocation getNewPart() {
+         public ResourceLocation getNewPart() {
             return newPart;
         }
         public void setPart(ResourceLocation part) {
@@ -227,6 +321,28 @@ public class LostCityEvent extends Event {
         }
         public boolean isChanged() {
             return changed;
+        }
+        public IDimensionInfo getProvider() {
+            return provider;
+        }
+        public Transform getTransform() {
+            return transform;
+        }
+        public void setTransform(Transform transform) {
+            this.transform = transform;
+        }
+        public BuildingInfo getInfo() {
+            return info;
+        }
+        public boolean isCustomPoints() {
+            return customPoints;
+        }
+        public void addSupportPoint(int x, int y) {
+            supportPoints.add(IntIntImmutablePair.of(x,y));
+            customPoints = true;
+        }
+        public List<IntIntImmutablePair> getSupportPoints() {
+            return supportPoints;
         }
     }
 

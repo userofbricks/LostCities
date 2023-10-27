@@ -1,0 +1,118 @@
+{
+  "palette": [
+    {
+      "char": "q",
+      "block": "create:metal_girder[axis=y,bottom=true,top=true,waterlogged=false,x=false,z=false]"
+    },
+    {
+      "char": "s",
+      "block": "create:metal_girder[axis=z,bottom=false,top=false,waterlogged=false,x=false,z=true]"
+    },
+    {
+      "char": "r",
+      "block": "create:metal_girder[axis=z,bottom=true,top=false,waterlogged=false,x=false,z=true]"
+    },
+    {
+      "char": "[",
+      "block": "create:track[shape=nd,turn=false,waterlogged=false]"
+    },
+    {
+      "char": "|",
+      "block": "create:track[shape=xo,turn=false,waterlogged=false]"
+    },
+    {
+      "char": "]",
+      "block": "create:track[shape=pd,turn=false,waterlogged=false]"
+    },
+    {
+      "char": "&",
+      "block": "create:track[shape=cr_o,turn=false,waterlogged=false]"
+    },
+    {
+      "char": "≠",
+      "block": "create:track[shape=zo,turn=false,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "",
+      "blocks": [
+        {
+          "random": 80,
+          "block": "create:rose_quartz_lamp[activate=false,powered=false,powering=false]"
+        },
+        {
+          "random": 16,
+          "block": "create:rose_quartz_lamp[activate=true,powered=false,powering=false]"
+        },
+        {
+          "random": 32,
+          "block": "minecraft:air"
+        }
+      ]
+    },
+    {
+      "char": "•",
+      "block": "create:industrial_iron_block"
+    },
+    {
+      "char": ">",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "function create_lost_cities:setup_highway_junction_right"
+      }
+    },
+    {
+      "char": "<",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "function create_lost_cities:setup_highway_junction_left"
+      }
+    },
+    {
+      "char": "^",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "place template create_lost_cities:track_crossing_se ~ ~ ~"
+      }
+    },
+    {
+      "char": "™",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "place template create_lost_cities:track_crossing_nw ~ ~ ~"
+      }
+    },
+    {
+      "char": "£",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "place template create_lost_cities:track_crossing_ne ~ ~ ~"
+      }
+    },
+    {
+      "char": "V",
+      "block": "minecraft:repeating_command_block[conditional=false,facing=up]",
+      "tag": {
+        "auto": 1,
+        "powered": 0,
+        "conditionMet": 1,
+        "Command": "place template create_lost_cities:track_crossing_sw ~ ~ ~"
+      }
+    }
+  ]
+}

@@ -21,3 +21,9 @@ Generate cities all over the world
     versionRange="[43.1.30,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.lostcities]]
+    modId="create"
+    mandatory=true
+    versionRange="[0.5.1.e,)"
+    ordering="AFTER"
+    side="BOTH"

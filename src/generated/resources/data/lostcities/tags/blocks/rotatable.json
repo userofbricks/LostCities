@@ -1,5 +1,7 @@
 {
   "values": [
-    "#minecraft:stairs"
+    "#minecraft:stairs",
+    "create:track",
+    "create:metal_girder"
   ]
 }
