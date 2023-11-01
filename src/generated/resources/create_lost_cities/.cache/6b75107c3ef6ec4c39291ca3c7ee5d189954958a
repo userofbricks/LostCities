@@ -1,0 +1,13 @@
+// 1.20.1	2023-10-31T22:45:28.16793	Registrate Provider for create_lost_cities [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+b518a683131221fd089a914e19b58b11fd70e7cc assets/create_lost_cities/blockstates/grass_cover.json
+c6dcba4047d721c7e0cf282131d54edf623663b7 assets/create_lost_cities/lang/en_ud.json
+281de070a8403c5cfe2981f6fda9f980b28c3684 assets/create_lost_cities/lang/en_us.json
+718cdc0ea8785d57c5a4a627bf9e211de2248915 assets/create_lost_cities/models/item/grass_cover.json
+059aa685ae3eabbc1b056df44933571267ec288d data/create_lost_cities/loot_tables/blocks/grass_cover.json
+92861bbfc33718f65a6c66f4468675fa09ac162f data/create_lost_cities/tags/blocks/grass_blocks.json
+e20c82f0bc0b86d316827904e1e7d1813aff2a8b data/lostcities/tags/blocks/easy_breakable.json
+579f9ab45d259dc02f99da787f77ce8a15cccbd1 data/lostcities/tags/blocks/foliage.json
+065197ac19c8488a4ee701fd172e9153bfe64aff data/lostcities/tags/blocks/lights.json
+ed436cc3ed9099eb0e03d2e18757d89cb2f7c715 data/lostcities/tags/blocks/not_breakable.json
+0f1991fa730f88be3043107c6d7b02cc9fbec8a7 data/lostcities/tags/blocks/rotatable.json
+bd55d0ad441047f0c4c9f136ccc8d9ab9b935da3 data/minecraft/tags/blocks/mineable/hoe.json

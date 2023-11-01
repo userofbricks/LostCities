@@ -2,7 +2,6 @@ package mcjty.lostcities;
 
 import mcjty.lostcities.api.ILostCities;
 import mcjty.lostcities.api.ILostCitiesPre;
-import mcjty.lostcities.create_lost_cities.BetterLostCities;
 import mcjty.lostcities.setup.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -47,7 +46,6 @@ public class LostCities {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG, "lostcities/common.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
 
-        new BetterLostCities();
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.addListener(setup::init);

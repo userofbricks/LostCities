@@ -1,5 +1,6 @@
 package mcjty.lostcities.worldgen;
 
+import com.userofbricks.refined_lost_cities.tags.CLCBlockTags;
 import it.unimi.dsi.fastutil.Pair;
 import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
 import mcjty.lostcities.LostCities;
@@ -206,7 +207,7 @@ public class LostCityTerrainFeature {
     private Set<BlockState> getStatesNeedingLightingUpdate() {
         if (statesNeedingLightingUpdate == null) {
             statesNeedingLightingUpdate = new HashSet<>();
-            for (Holder<Block> bh : Tools.getBlocksForTag(LostTags.LIGHTS_TAG)) {
+            for (Holder<Block> bh : Tools.getBlocksForTag(CLCBlockTags.LIGHTS.tag)) {
                 addStates(bh.value(), statesNeedingLightingUpdate);
             }
         }
@@ -1208,7 +1209,7 @@ public class LostCityTerrainFeature {
         if (isEmpty(state)){
             return true;
         }
-        return Tools.hasTag(state.getBlock(), LostTags.FOLIAGE_TAG);
+        return CLCBlockTags.FOLIAGE.matches(state);
     }
 
     private void moveUp(int x, int z, int height, boolean dowater) {
@@ -2538,7 +2539,7 @@ public class LostCityTerrainFeature {
     }
 
     private BlockState transformBlockState(Transform transform, BlockState b) {
-        if (Tools.hasTag(b.getBlock(), LostTags.ROTATABLE_TAG)) {
+        if (CLCBlockTags.ROTATABLE.matches(b)) {
             b = b.rotate(transform.getMcRotation());
         } else if (getRailStates().contains(b)) {
             EnumProperty<RailShape> shapeProperty;

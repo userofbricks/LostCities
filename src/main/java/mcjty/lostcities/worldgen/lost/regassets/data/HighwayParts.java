@@ -2,8 +2,8 @@ package mcjty.lostcities.worldgen.lost.regassets.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import mcjty.lostcities.create_lost_cities.regassets.data.HighwayBiCornerParts;
-import mcjty.lostcities.create_lost_cities.regassets.data.HighwayBiJunctionParts;
+import com.userofbricks.refined_lost_cities.regassets.data.HighwayBiCornerParts;
+import com.userofbricks.refined_lost_cities.regassets.data.HighwayBiJunctionParts;
 
 import java.util.Optional;
 

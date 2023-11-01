@@ -1,10 +1,10 @@
 package mcjty.lostcities.worldgen.lost;
 
+import com.userofbricks.refined_lost_cities.tags.CLCBlockTags;
 import mcjty.lostcities.config.LostCityProfile;
 import mcjty.lostcities.varia.GeometryTools;
 import mcjty.lostcities.varia.Tools;
 import mcjty.lostcities.worldgen.IDimensionInfo;
-import mcjty.lostcities.worldgen.LostTags;
 import mcjty.lostcities.worldgen.lost.cityassets.CompiledPalette;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
@@ -70,11 +70,11 @@ public class DamageArea {
     }
 
     public BlockState damageBlock(BlockState b, IDimensionInfo provider, int y, float damage, CompiledPalette palette, BlockState liquidChar) {
-        if (Tools.hasTag(b.getBlock(), LostTags.NOT_BREAKABLE_TAG)) {
+        if (CLCBlockTags.NOT_BREAKABLE.matches(b)) {
             return b;
         }
 
-        if (Tools.hasTag(b.getBlock(), LostTags.EASY_BREAKABLE_TAG)) {
+        if (CLCBlockTags.EASY_BREAKABLE.matches(b)) {
             damage *= 2.5f;    // As if this block gets double the damage
         }
         if (provider.getRandom().nextFloat() <= damage) {

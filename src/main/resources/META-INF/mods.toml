@@ -1,27 +1,42 @@
 modLoader="javafml"
 license="MIT License https://github.com/McJtyMods/LostCities/blob/1.16/LICENCE"
 loaderVersion="[47,)"
-issueTrackerURL="http://github.com/McJtyMods/LostCities/issues"
-displayURL="http://github.com/McJtyMods/LostCities/"
+issueTrackerURL="http://github.com/userofbricks/LostCities/issues"
+displayURL="http://github.com/userofbricks/LostCities/"
 #logoFile="examplemod.png" #optional
 #credits="Thanks for this example mod goes to Java" #optional
-authors="McJty"
+authors="McJty, Userofbricks"
 
 [[mods]]
 modId="lostcities"
 version="${file.jarVersion}"
 displayName="LostCities"
-#updateJSONURL="http://myurl.me/" #optional
 description='''
 Generate cities all over the world
 '''
+
+[[mods]]
+modId="create_lost_cities"
+version="0.0.1"
+displayName="Create Lost Cities"
+description='''
+Add detail and deteriorated funtionality to cities
+'''
+
 [[dependencies.lostcities]]
     modId="forge"
     mandatory=true
     versionRange="[43.1.30,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.lostcities]]
+
+[[dependencies.create_lost_cities]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43.1.30,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.create_lost_cities]]
     modId="create"
     mandatory=true
     versionRange="[0.5.1.e,)"

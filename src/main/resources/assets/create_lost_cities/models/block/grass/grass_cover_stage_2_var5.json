@@ -1,0 +1,41 @@
+{
+	"credit": "Made By Userofbricks",
+	"textures": {
+		"0": "block/grass_block_side_overlay",
+		"1": "block/grass_block_top",
+		"2": "block/grass",
+		"particle": "block/grass_block_side_overlay"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 1], "texture": "#0", "tintindex": 0},
+				"east": {"uv": [0, 0, 16, 1], "texture": "#0", "tintindex": 0},
+				"south": {"uv": [0, 0, 16, 1], "texture": "#0", "tintindex": 0},
+				"west": {"uv": [0, 0, 16, 1], "texture": "#0", "tintindex": 0},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1", "tintindex": 0},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1", "tintindex": 0}
+			}
+		},
+		{
+			"from": [0, 1, 7],
+			"to": [16, 5, 7],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [6, 0, 6]},
+			"faces": {
+				"north": {"uv": [0, 2, 16, 6], "texture": "#2", "tintindex": 0},
+				"south": {"uv": [0, 2, 16, 6], "texture": "#2", "tintindex": 0}
+			}
+		},
+		{
+			"from": [8, 1, -1],
+			"to": [8, 5, 15],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [6, 0, 6]},
+			"faces": {
+				"east": {"uv": [0, 2, 16, 6], "texture": "#2", "tintindex": 0},
+				"west": {"uv": [0, 2, 16, 6], "texture": "#2", "tintindex": 0}
+			}
+		}
+	]
+}

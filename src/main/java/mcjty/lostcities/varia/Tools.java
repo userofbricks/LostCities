@@ -120,11 +120,6 @@ public class Tools {
         return registry.getTagOrEmpty(rl);
     }
 
-    public static boolean hasTag(Block block, TagKey<Block> tag) {
-        //noinspection deprecation
-        return BuiltInRegistries.BLOCK.getHolderOrThrow(block.builtInRegistryHolder().key()).is(tag);
-    }
-
     public static int getSeaLevel(LevelReader level) {
         if (level instanceof WorldGenLevel wgLevel) {
             if (wgLevel.getChunkSource() instanceof ServerChunkCache scc) {
