@@ -5,3 +5,244 @@ build/*
 /run/options.txt
 /run/usercache.json
 /run/usernamecache.json
+/run/command_block_nbt_data_required.json
+/run/config/jei/blacklist.cfg
+/run/config/jei/ingredient-list-mod-sort-order.ini
+/run/config/jei/ingredient-list-type-sort-order.ini
+/run/config/jei/jei-client.ini
+/run/config/jei/jei-colors.ini
+/run/config/jei/jei-debug.ini
+/run/config/jei/jei-mod-id-format.ini
+/run/config/jei/recipe-category-sort-order.ini
+/run/config/lostcities/profiles/ancient.json
+/run/config/lostcities/profiles/bio_wasteland.json
+/run/config/lostcities/profiles/biosphere.json
+/run/config/lostcities/profiles/cavern.json
+/run/config/lostcities/profiles/default.json
+/run/config/lostcities/profiles/largecities.json
+/run/config/lostcities/profiles/nodamage.json
+/run/config/lostcities/profiles/onlycities.json
+/run/config/lostcities/profiles/rarecities.json
+/run/config/lostcities/profiles/safe.json
+/run/config/lostcities/profiles/tallbuildings.json
+/run/config/lostcities/profiles/wasteland.json
+/run/config/lostcities/common.toml
+/run/config/create-client.toml
+/run/config/create-common.toml
+/run/config/flywheel-client.toml
+/run/config/fml.toml
+/run/config/forge-client.toml
+/run/config/nbtedit.toml
+/run/config/theoneprobe-client.toml
+/run/config/theoneprobe-common.toml
+/run/crash-reports/crash-2023-09-24_13.25.28-fml.txt
+/run/crash-reports/crash-2023-09-24_13.31.55-server.txt
+/run/crash-reports/crash-2023-09-24_17.00.39-fml.txt
+/run/crash-reports/crash-2023-09-28_07.48.41-client.txt
+/run/crash-reports/crash-2023-10-04_16.15.48-client.txt
+/run/crash-reports/crash-2023-10-30_20.03.15-client.txt
+/run/crash-reports/crash-2023-10-31_12.07.41-server.txt
+/run/logs/2023-09-24-1.log.gz
+/run/logs/2023-09-24-2.log.gz
+/run/logs/2023-09-24-3.log.gz
+/run/logs/2023-09-24-4.log.gz
+/run/logs/2023-09-24-5.log.gz
+/run/logs/2023-09-24-6.log.gz
+/run/logs/2023-09-24-7.log.gz
+/run/logs/2023-09-24-8.log.gz
+/run/logs/2023-09-24-9.log.gz
+/run/logs/2023-09-24-10.log.gz
+/run/logs/2023-09-24-11.log.gz
+/run/logs/2023-09-25-1.log.gz
+/run/logs/2023-09-26-2.log.gz
+/run/logs/2023-09-28-2.log.gz
+/run/logs/2023-09-28-3.log.gz
+/run/logs/2023-09-28-4.log.gz
+/run/logs/2023-09-28-5.log.gz
+/run/logs/2023-10-04-1.log.gz
+/run/logs/2023-10-04-2.log.gz
+/run/logs/2023-10-04-3.log.gz
+/run/logs/2023-10-04-4.log.gz
+/run/logs/2023-10-04-5.log.gz
+/run/logs/2023-10-05-1.log.gz
+/run/logs/2023-10-06-2.log.gz
+/run/logs/2023-10-06-3.log.gz
+/run/logs/2023-10-06-4.log.gz
+/run/logs/2023-10-06-5.log.gz
+/run/logs/2023-10-07-2.log.gz
+/run/logs/2023-10-07-3.log.gz
+/run/logs/2023-10-08-2.log.gz
+/run/logs/2023-10-08-3.log.gz
+/run/logs/2023-10-27-2.log.gz
+/run/logs/2023-10-27-3.log.gz
+/run/logs/2023-10-27-4.log.gz
+/run/logs/2023-10-30-2.log.gz
+/run/logs/2023-10-30-3.log.gz
+/run/logs/2023-10-30-4.log.gz
+/run/logs/2023-10-31-1.log.gz
+/run/logs/2023-10-31-2.log.gz
+/run/logs/2023-10-31-3.log.gz
+/run/logs/2023-10-31-4.log.gz
+/run/logs/2023-10-31-5.log.gz
+/run/logs/2023-10-31-6.log.gz
+/run/logs/2023-10-31-7.log.gz
+/run/logs/2023-10-31-8.log.gz
+/run/logs/2023-10-31-9.log.gz
+/run/logs/2023-10-31-10.log.gz
+/run/logs/2023-10-31-11.log.gz
+/run/logs/2023-10-31-12.log.gz
+/run/logs/2023-10-31-13.log.gz
+/run/logs/2023-10-31-14.log.gz
+/run/logs/2023-10-31-15.log.gz
+/run/logs/2023-10-31-16.log.gz
+/run/logs/2023-10-31-17.log.gz
+/run/logs/2023-10-31-18.log.gz
+/run/logs/2023-10-31-19.log.gz
+/run/logs/2023-10-31-20.log.gz
+/run/logs/2023-10-31-21.log.gz
+/run/logs/2023-10-31-22.log.gz
+/run/logs/2023-10-31-23.log.gz
+/run/logs/2023-10-31-24.log.gz
+/run/logs/2023-10-31-25.log.gz
+/run/logs/debug.log
+/run/logs/debug-1.log.gz
+/run/logs/debug-2.log.gz
+/run/logs/debug-3.log.gz
+/run/logs/debug-4.log.gz
+/run/logs/debug-5.log.gz
+/run/logs/latest.log
+/run/saves/Highway Gen Test World (1)/advancements/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/Highway Gen Test World (1)/data/capabilities.dat
+/run/saves/Highway Gen Test World (1)/data/create_tracks.dat
+/run/saves/Highway Gen Test World (1)/data/raids.dat
+/run/saves/Highway Gen Test World (1)/data/random_sequences.dat
+/run/saves/Highway Gen Test World (1)/DIM1/data/capabilities.dat
+/run/saves/Highway Gen Test World (1)/DIM1/data/raids_end.dat
+/run/saves/Highway Gen Test World (1)/DIM-1/data/capabilities.dat
+/run/saves/Highway Gen Test World (1)/DIM-1/data/raids.dat
+/run/saves/Highway Gen Test World (1)/dimensions/lostcities/lostcity/data/capabilities.dat
+/run/saves/Highway Gen Test World (1)/dimensions/lostcities/lostcity/data/raids.dat
+/run/saves/Highway Gen Test World (1)/entities/r.0.0.mca
+/run/saves/Highway Gen Test World (1)/entities/r.0.-1.mca
+/run/saves/Highway Gen Test World (1)/entities/r.0.-2.mca
+/run/saves/Highway Gen Test World (1)/entities/r.-1.0.mca
+/run/saves/Highway Gen Test World (1)/entities/r.-1.-1.mca
+/run/saves/Highway Gen Test World (1)/entities/r.-1.-2.mca
+/run/saves/Highway Gen Test World (1)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat
+/run/saves/Highway Gen Test World (1)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old
+/run/saves/Highway Gen Test World (1)/poi/r.0.0.mca
+/run/saves/Highway Gen Test World (1)/poi/r.0.-1.mca
+/run/saves/Highway Gen Test World (1)/poi/r.0.-2.mca
+/run/saves/Highway Gen Test World (1)/poi/r.1.0.mca
+/run/saves/Highway Gen Test World (1)/poi/r.1.-1.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-1.0.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-1.-1.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-1.-2.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-2.0.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-2.-1.mca
+/run/saves/Highway Gen Test World (1)/poi/r.-2.-2.mca
+/run/saves/Highway Gen Test World (1)/region/r.0.0.mca
+/run/saves/Highway Gen Test World (1)/region/r.0.-1.mca
+/run/saves/Highway Gen Test World (1)/region/r.0.-2.mca
+/run/saves/Highway Gen Test World (1)/region/r.1.0.mca
+/run/saves/Highway Gen Test World (1)/region/r.1.-1.mca
+/run/saves/Highway Gen Test World (1)/region/r.1.-2.mca
+/run/saves/Highway Gen Test World (1)/region/r.-1.0.mca
+/run/saves/Highway Gen Test World (1)/region/r.-1.-1.mca
+/run/saves/Highway Gen Test World (1)/region/r.-1.-2.mca
+/run/saves/Highway Gen Test World (1)/region/r.-2.0.mca
+/run/saves/Highway Gen Test World (1)/region/r.-2.-1.mca
+/run/saves/Highway Gen Test World (1)/region/r.-2.-2.mca
+/run/saves/Highway Gen Test World (1)/serverconfig/create-server.toml
+/run/saves/Highway Gen Test World (1)/serverconfig/forge-server.toml
+/run/saves/Highway Gen Test World (1)/serverconfig/jei-server.toml
+/run/saves/Highway Gen Test World (1)/serverconfig/lostcities-server.toml
+/run/saves/Highway Gen Test World (1)/stats/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/Highway Gen Test World (1)/icon.png
+/run/saves/Highway Gen Test World (1)/level.dat
+/run/saves/Highway Gen Test World (1)/level.dat_old
+/run/saves/Highway Gen Test World (1)/session.lock
+/run/saves/Highway Gen Test World 2 (1)/advancements/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/Highway Gen Test World 2 (1)/data/capabilities.dat
+/run/saves/Highway Gen Test World 2 (1)/data/create_tracks.dat
+/run/saves/Highway Gen Test World 2 (1)/data/raids.dat
+/run/saves/Highway Gen Test World 2 (1)/data/random_sequences.dat
+/run/saves/Highway Gen Test World 2 (1)/DIM1/data/capabilities.dat
+/run/saves/Highway Gen Test World 2 (1)/DIM1/data/raids_end.dat
+/run/saves/Highway Gen Test World 2 (1)/DIM-1/data/capabilities.dat
+/run/saves/Highway Gen Test World 2 (1)/DIM-1/data/raids.dat
+/run/saves/Highway Gen Test World 2 (1)/dimensions/lostcities/lostcity/data/capabilities.dat
+/run/saves/Highway Gen Test World 2 (1)/dimensions/lostcities/lostcity/data/raids.dat
+/run/saves/Highway Gen Test World 2 (1)/entities/r.0.0.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.0.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.0.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.0.-3.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.-1.0.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.-1.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/entities/r.-1.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat
+/run/saves/Highway Gen Test World 2 (1)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old
+/run/saves/Highway Gen Test World 2 (1)/poi/r.0.0.mca
+/run/saves/Highway Gen Test World 2 (1)/poi/r.0.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/poi/r.0.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/poi/r.-1.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/poi/r.-1.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.0.0.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.0.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.0.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.0.-3.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-1.0.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-1.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-1.-2.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-1.-3.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-2.0.mca
+/run/saves/Highway Gen Test World 2 (1)/region/r.-2.-1.mca
+/run/saves/Highway Gen Test World 2 (1)/serverconfig/create-server.toml
+/run/saves/Highway Gen Test World 2 (1)/serverconfig/forge-server.toml
+/run/saves/Highway Gen Test World 2 (1)/serverconfig/jei-server.toml
+/run/saves/Highway Gen Test World 2 (1)/serverconfig/lostcities-server.toml
+/run/saves/Highway Gen Test World 2 (1)/stats/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/Highway Gen Test World 2 (1)/icon.png
+/run/saves/Highway Gen Test World 2 (1)/level.dat
+/run/saves/Highway Gen Test World 2 (1)/level.dat_old
+/run/saves/Highway Gen Test World 2 (1)/session.lock
+/run/saves/New World (3)/advancements/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/New World (3)/data/capabilities.dat
+/run/saves/New World (3)/data/create_tracks.dat
+/run/saves/New World (3)/data/raids.dat
+/run/saves/New World (3)/data/random_sequences.dat
+/run/saves/New World (3)/DIM1/data/capabilities.dat
+/run/saves/New World (3)/DIM1/data/raids_end.dat
+/run/saves/New World (3)/DIM-1/data/capabilities.dat
+/run/saves/New World (3)/DIM-1/data/raids.dat
+/run/saves/New World (3)/dimensions/lostcities/lostcity/data/capabilities.dat
+/run/saves/New World (3)/dimensions/lostcities/lostcity/data/raids.dat
+/run/saves/New World (3)/entities/r.0.0.mca
+/run/saves/New World (3)/entities/r.0.-1.mca
+/run/saves/New World (3)/entities/r.-1.0.mca
+/run/saves/New World (3)/entities/r.-1.-1.mca
+/run/saves/New World (3)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat
+/run/saves/New World (3)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old
+/run/saves/New World (3)/poi/r.0.0.mca
+/run/saves/New World (3)/poi/r.0.-1.mca
+/run/saves/New World (3)/poi/r.0.-2.mca
+/run/saves/New World (3)/poi/r.-1.0.mca
+/run/saves/New World (3)/poi/r.-1.-1.mca
+/run/saves/New World (3)/poi/r.-1.-2.mca
+/run/saves/New World (3)/region/r.0.0.mca
+/run/saves/New World (3)/region/r.0.-1.mca
+/run/saves/New World (3)/region/r.0.-2.mca
+/run/saves/New World (3)/region/r.1.-1.mca
+/run/saves/New World (3)/region/r.1.-2.mca
+/run/saves/New World (3)/region/r.-1.0.mca
+/run/saves/New World (3)/region/r.-1.-1.mca
+/run/saves/New World (3)/region/r.-1.-2.mca
+/run/saves/New World (3)/serverconfig/create-server.toml
+/run/saves/New World (3)/serverconfig/forge-server.toml
+/run/saves/New World (3)/serverconfig/jei-server.toml
+/run/saves/New World (3)/serverconfig/lostcities-server.toml
+/run/saves/New World (3)/stats/380df991-f603-344c-a090-369bad2a924a.json
+/run/saves/New World (3)/icon.png
+/run/saves/New World (3)/level.dat
+/run/saves/New World (3)/level.dat_old
+/run/saves/New World (3)/session.lock

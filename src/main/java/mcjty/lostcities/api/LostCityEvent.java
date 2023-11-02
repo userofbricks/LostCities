@@ -273,7 +273,7 @@ public class LostCityEvent extends Event {
     }
 
     /**
-     * PostGenHighwayChunkEvent is fired right after generation of a chunk containing a highway.<br>
+     * GenHighwayChunkEvent is fired right after generation of a chunk containing a highway.<br>
      * NOTE! This will be called for both city and outside chunks but only if a highway has been
      * generated but before supports have been. <br>
      * <br>
@@ -285,7 +285,7 @@ public class LostCityEvent extends Event {
      * <br>
      * This event is fired on the {@link MinecraftForge#EVENT_BUS}.
      **/
-    public static class PostGenHighwayChunkEvent extends LostCityEvent {
+    public static class GenHighwayChunkEvent extends LostCityEvent {
         private final ChunkAccess primer;
         private final IDimensionInfo provider;
         private final ResourceLocation oldPart;
@@ -296,7 +296,7 @@ public class LostCityEvent extends Event {
 
         private Transform transform;
 
-        public PostGenHighwayChunkEvent(IDimensionInfo provider, ILostCities lostCities, BuildingInfo info, Transform transform, ChunkAccess primer, ResourceLocation part) {
+        public GenHighwayChunkEvent(IDimensionInfo provider, ILostCities lostCities, BuildingInfo info, Transform transform, ChunkAccess primer, ResourceLocation part) {
             super(provider.getWorld(), lostCities, info.chunkX, info.chunkZ);
             this.primer = primer;
             this.oldPart = part;

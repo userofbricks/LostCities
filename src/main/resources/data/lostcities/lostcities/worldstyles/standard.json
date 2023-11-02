@@ -74,30 +74,5 @@
       },
       "citystyle": "citystyle_desert"
     }
-  ],
-  "parts": {
-    "highways" : {
-      "tunnel": "create_lost_cities:highway_tunnel",
-      "open": "create_lost_cities:highway_open",
-      "bridge": "create_lost_cities:highway_bridge",
-      "tunnel_bi": "create_lost_cities:highway_tunnel_bi",
-      "open_bi" : "create_lost_cities:highway_open_bridge_bi",
-      "bridge_bi" : "create_lost_cities:highway_open_bridge_bi",
-      "bi_junction_extensions": {
-        "tunnel_junction": "create_lost_cities:highway_tunnel_junction",
-        "open_junction": "create_lost_cities:highway_open_junction",
-        "bridge_junction": "create_lost_cities:highway_bridge_junction",
-        "tunnel_junction_mirrored": "create_lost_cities:highway_tunnel_junction_mirrored",
-        "open_junction_mirrored": "create_lost_cities:highway_open_junction_mirrored",
-        "bridge_junction_mirrored": "create_lost_cities:highway_bridge_junction_mirrored"
-      },
-      "bi_corners": {
-        "tunnel_corner_city": "create_lost_cities:highway_tunnel_corner",
-        "open_corner_city": "create_lost_cities:highway_open_corner_city",
-        "bridge_corner_city": "create_lost_cities:highway_bridge_corner_city",
-        "tunnel_corner_normal": "create_lost_cities:highway_tunnel_corner",
-        "bridge_corner_normal": "create_lost_cities:highway_bridge_corner_normal"
-      }
-    }
-  }
+  ]
 }

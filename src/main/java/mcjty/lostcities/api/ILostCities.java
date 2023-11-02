@@ -23,6 +23,7 @@ public interface ILostCities {
     // Meta values that you can use in assets
     String META_DONTCONNECT = "dontconnect";
     String META_SUPPORT = "support";
+    String META_SUPPORT_POINTS = "support_points";
     String META_Z_1 = "z1";
     String META_Z_2 = "z2";
     String META_NOWATER = "nowater";

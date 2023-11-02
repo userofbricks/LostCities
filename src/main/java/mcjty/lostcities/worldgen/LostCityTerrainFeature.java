@@ -1,8 +1,7 @@
 package mcjty.lostcities.worldgen;
 
 import com.userofbricks.refined_lost_cities.tags.CLCBlockTags;
-import it.unimi.dsi.fastutil.Pair;
-import it.unimi.dsi.fastutil.ints.IntIntImmutablePair;
+import com.userofbricks.refined_lost_cities.worldgen.HighwayPartGeneration;
 import mcjty.lostcities.LostCities;
 import mcjty.lostcities.api.ILostCities;
 import mcjty.lostcities.api.LostCityEvent;
@@ -83,6 +82,10 @@ public class LostCityTerrainFeature {
     private BlockState[] randomLeafs = null;
     private BlockState[] randomDirt = null;
     private Set<BlockState> randomDirtSet = null;
+
+    public ChunkDriver getDriver() {
+        return driver;
+    }
 
     private final ChunkDriver driver;
 
@@ -182,7 +185,7 @@ public class LostCityTerrainFeature {
         return randomDirt[fastrand128()];
     }
 
-    private Set<BlockState> getRailStates() {
+    protected Set<BlockState> getRailStates() {
         if (railStates == null) {
             railStates = new HashSet<>();
             addStates(Blocks.RAIL, railStates);
@@ -541,7 +544,7 @@ public class LostCityTerrainFeature {
         }
 
         generateBridges(info);
-        generateHighways(chunkX, chunkZ, info);
+        HighwayPartGeneration.generateHighways(chunkX, chunkZ, info, this);
 
         ScatteredSettings scatteredSettings = provider.getWorldStyle().getScatteredSettings();
         if (scatteredSettings != null) {
@@ -884,93 +887,6 @@ public class LostCityTerrainFeature {
         }
     }
 
-    private void generateHighways(int chunkX, int chunkZ, BuildingInfo info) {
-        int levelX = Highway.getXHighwayLevel(chunkX, chunkZ, provider, info.profile);
-        int levelZ = Highway.getZHighwayLevel(chunkX, chunkZ, provider, info.profile);
-        if (levelX == levelZ && levelX >= 0) {
-            // Crossing
-            generateHighwayPart(info, levelX, Transform.ROTATE_NONE, info.getXmax(), info.getZmax(), true);
-        } else if (levelX >= 0 && levelZ >= 0) {
-            // There are two highways on different level. Make sure the lowest one is done first because it
-            // will clear out what is above it
-            if (levelX == 0) {
-                generateHighwayPart(info, levelX, Transform.ROTATE_NONE, info.getZmin(), info.getZmax(), false);
-                generateHighwayPart(info, levelZ, Transform.ROTATE_90, info.getXmax(), info.getXmax(), false);
-            } else {
-                generateHighwayPart(info, levelZ, Transform.ROTATE_90, info.getXmax(), info.getXmax(), false);
-                generateHighwayPart(info, levelX, Transform.ROTATE_NONE, info.getZmin(), info.getZmax(), false);
-            }
-        } else {
-            if (levelX >= 0) {
-                generateHighwayPart(info, levelX, Transform.ROTATE_NONE, info.getZmin(), info.getZmax(), false);
-            } else if (levelZ >= 0) {
-                generateHighwayPart(info, levelZ, Transform.ROTATE_90, info.getXmax(), info.getXmax(), false);
-            }
-        }
-    }
-
-    private static boolean isClearableAboveHighway(BlockState st) {
-        return !st.is(BlockTags.LEAVES) && !st.is(BlockTags.LOGS);
-    }
-
-    private void generateHighwayPart(BuildingInfo info, int level, Transform transform, BuildingInfo adjacent1, BuildingInfo adjacent2, boolean bidirectional) {
-        int highwayGroundLevel = info.groundLevel + level * FLOORHEIGHT;
-        HighwayParts highwayParts = provider.getWorldStyle().getPartSelector().highwayParts();
-
-        BuildingPart part;
-        int height = -1;
-        if (info.isTunnel(level)) {
-            // We know we need a tunnel
-            part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.tunnel(bidirectional));
-            generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
-        } else if (info.isCity && level <= adjacent1.cityLevel && level <= adjacent2.cityLevel && adjacent1.isCity && adjacent2.isCity) {
-            // Simple highway in the city
-            part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.open(bidirectional));
-            height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
-        } else {
-            part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), highwayParts.bridge(bidirectional));
-            height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true);
-        }
-
-        LostCityEvent.PostGenHighwayChunkEvent postevent = new LostCityEvent.PostGenHighwayChunkEvent(provider, LostCities.lostCitiesImp, info, transform, driver.getPrimer(), part.getId());
-        MinecraftForge.EVENT_BUS.post(postevent);
-
-        if (postevent.isChanged()) {
-            part = AssetRegistries.PARTS.getOrThrow(provider.getWorld(), postevent.getNewPart().toString());
-            height = generatePart(info, part, postevent.getTransform(), 0, highwayGroundLevel, 0, true);
-        }
-        // Clear a bit more above the highway if not tunnel and a height has been set
-        if (!info.profile.isCavern() && !info.isTunnel(level) && height != -1) {
-            int clearheight = 15;
-            for (int x = 0; x < 16; x++) {
-                for (int z = 0; z < 16; z++) {
-                    clearRange(info, x, z, height, height + clearheight, info.waterLevel > info.groundLevel,
-                            LostCityTerrainFeature::isClearableAboveHighway);
-                }
-            }
-        }
-
-        List<IntIntImmutablePair> supportPoints = postevent.isCustomPoints() ? postevent.getSupportPoints() : Arrays.asList(IntIntImmutablePair.of(0,15),IntIntImmutablePair.of(0,0));
-
-        Character support = part.getMetaChar(ILostCities.META_SUPPORT);
-        if (info.profile.HIGHWAY_SUPPORTS && support != null) {
-            BlockState sup = info.getCompiledPalette().get(support);
-            for (IntIntImmutablePair cordPair : supportPoints) {
-                int x = transform.rotateX(cordPair.leftInt(), cordPair.rightInt());
-                int z = transform.rotateZ(cordPair.leftInt(), cordPair.rightInt());
-                driver.current(x, highwayGroundLevel - 1, z);
-                for (int y = 0; y < 40; y++) {
-                    if (isEmpty(driver.getBlock())) {
-                        driver.block(sup);
-                    } else {
-                        break;
-                    }
-                    driver.decY();
-                }
-            }
-        }
-    }
-
     private void clearRange(BuildingInfo info, int x, int z, int height1, int height2, boolean dowater) {
         if (dowater) {
             // Special case for drowned city
@@ -981,7 +897,7 @@ public class LostCityTerrainFeature {
         }
     }
 
-    private void clearRange(BuildingInfo info, int x, int z, int height1, int height2, boolean dowater, Predicate<BlockState> test) {
+    public void clearRange(BuildingInfo info, int x, int z, int height1, int height2, boolean dowater, Predicate<BlockState> test) {
         if (dowater) {
             // Special case for drowned city
             driver.setBlockRange(x, height1, z, info.waterLevel, liquid, test);
@@ -1192,7 +1108,7 @@ public class LostCityTerrainFeature {
     }
 
     // Return true if state is air or liquid
-    private static boolean isEmpty(BlockState state) {
+    public static boolean isEmpty(BlockState state) {
         if (state.isAir()) {
             return true;
         }
@@ -1441,7 +1357,7 @@ public class LostCityTerrainFeature {
             }
         }
         if (levelX >= 0 || levelZ >= 0) {
-            generateHighways(chunkX, chunkZ, info);
+            HighwayPartGeneration.generateHighways(chunkX, chunkZ, info, this);
         }
 
         if (info.profile.RUBBLELAYER) {
@@ -2393,7 +2309,7 @@ public class LostCityTerrainFeature {
      * Generate a part. If 'airWaterLevel' is true then 'hard air' blocks are replaced with water below the waterLevel.
      * Otherwise they are replaced with air.
      */
-    private int generatePart(BuildingInfo info, IBuildingPart part,
+    public int generatePart(BuildingInfo info, IBuildingPart part,
                              Transform transform,
                              int ox, int oy, int oz, boolean airWaterLevel) {
         if (profile.EDITMODE) {

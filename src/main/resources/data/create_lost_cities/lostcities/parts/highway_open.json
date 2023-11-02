@@ -3,6 +3,19 @@
     {
       "key": "support",
       "char": "v"
+    },
+    {
+      "key": "support_points",
+      "int_pairs": [
+        {
+          "x": 0,
+          "z": 0
+        },
+        {
+          "x": 0,
+          "z": 15
+        }
+      ]
     }
   ],
   "refpalette": "create_lost_cities:highway",

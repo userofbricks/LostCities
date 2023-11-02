@@ -5,11 +5,14 @@ import mcjty.lostcities.worldgen.lost.BuildingInfo;
 import mcjty.lostcities.worldgen.lost.regassets.BuildingPartRE;
 import mcjty.lostcities.worldgen.lost.regassets.data.DataTools;
 import mcjty.lostcities.worldgen.lost.regassets.data.PartMeta;
+import com.userofbricks.refined_lost_cities.regassets.data.XZCords;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.CommonLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -84,6 +87,11 @@ public class BuildingPart implements IBuildingPart, ILostCityAsset {
     @Override
     public String getMetaString(String key) {
         return (String) metadata.get(key);
+    }
+
+    @Override
+    public @Nullable List<XZCords> getMetaIntPairList(String key) {
+        return (List<XZCords>) metadata.get(key);
     }
 
     public String getRefPaletteName() {

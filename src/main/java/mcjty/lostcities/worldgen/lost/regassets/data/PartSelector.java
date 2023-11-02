@@ -2,6 +2,7 @@ package mcjty.lostcities.worldgen.lost.regassets.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.userofbricks.refined_lost_cities.regassets.data.HighwayParts;
 
 import java.util.Optional;
 
