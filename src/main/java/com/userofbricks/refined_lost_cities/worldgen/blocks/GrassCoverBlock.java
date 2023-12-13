@@ -44,6 +44,10 @@ public class GrassCoverBlock extends DoublePlantBlock implements BonemealableBlo
         return getShapeByAgeAndVariant(getAge(pState), getVariant(pState), getHalf(pState));
     }
 
+    public boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
+        return true;
+    }
+
     public VoxelShape getShapeByAgeAndVariant(int age, int variant, DoubleBlockHalf half) {
         double[] x1 = new double[] {2, 4, 1, 0, 0, 1};
         double[] x2 = new double[] {14, 15, 12, 12, 15, 16};
@@ -100,21 +104,32 @@ public class GrassCoverBlock extends DoublePlantBlock implements BonemealableBlo
                     if (i > 3 && pLevel.getBlockState(pPos.above()).getBlock() instanceof AirBlock) pLevel.setBlock(pPos.above(), pState.setValue(AGE, i + 1).setValue(HALF, DoubleBlockHalf.UPPER), 2);
                 }
             }
-            if (pRandom.nextInt(10) == 0) {
-                BlockState blockstate = this.defaultBlockState();
-                BlockState blockstate2 = Blocks.GRASS_BLOCK.defaultBlockState();
+            spread(pLevel, pPos, pRandom);
+        }
+    }
+    public static void spread(ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pRandom.nextInt(20) == 0) {
+            BlockState blockstate = CLCBlocks.GRASS_COVER_BLOCK.get().defaultBlockState();
+            BlockState blockstate2 = Blocks.GRASS_BLOCK.defaultBlockState();
 
-                for(int j = 0; j < 4; ++j) {
-                    BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
-                    BlockState belowState = pLevel.getBlockState(blockpos.below());
-                    if (pLevel.getBlockState(blockpos).is(Blocks.AIR) && canPropagate(pLevel, blockpos) && belowState.isFaceSturdy(pLevel, blockpos, Direction.UP) && !CLCBlockTags.GRASS_BLOCKS.matches(belowState)) {
-                        pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(VARIANT, pLevel.random.nextInt(1,6)).setValue(MAX_AGE, pRandom.nextInt(5, 7)));
+            for(int j = 0; j < 4; ++j) {
+                BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
+                BlockState currentState = pLevel.getBlockState(blockpos);
+                BlockState belowState = pLevel.getBlockState(blockpos.below());
+                if (canPropagate(pLevel, blockpos) && belowState.isFaceSturdy(pLevel, blockpos, Direction.UP) && !CLCBlockTags.GRASS_BLOCKS.matches(belowState)) {
+                    if (currentState.is(Blocks.AIR)) {
+                        pLevel.setBlockAndUpdate(blockpos, blockstate.setValue(VARIANT, pLevel.random.nextInt(1, 6)).setValue(MAX_AGE, pRandom.nextInt(5, 7)));
+                    } else if (CLCBlocks.overgrown_conversions.containsKey(currentState.getBlock()) && pRandom.nextInt(3) == 0) {
+                        if ((currentState.getBlock() instanceof CropBlock cropBlock && cropBlock.getAge(currentState) >= cropBlock.getMaxAge()) ||
+                                (currentState.getBlock() instanceof PitcherCropBlock && currentState.getValue(PitcherCropBlock.AGE) >= PitcherCropBlock.MAX_AGE) ||
+                                (!(currentState.getBlock() instanceof CropBlock) && !(currentState.getBlock() instanceof PitcherCropBlock)))
+                            pLevel.setBlockAndUpdate(blockpos, CLCBlocks.overgrown_conversions.get(currentState.getBlock()).get().defaultBlockState());
                     }
+                }
 
-                    blockpos = pPos.below().offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
-                    if (pLevel.getBlockState(blockpos).is(Blocks.DIRT) && canPropagate(pLevel, blockpos)) {
-                        pLevel.setBlockAndUpdate(blockpos, blockstate2);
-                    }
+                blockpos = pPos.below().offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
+                if (pLevel.getBlockState(blockpos).is(Blocks.DIRT) && canPropagate(pLevel, blockpos)) {
+                    pLevel.setBlockAndUpdate(blockpos, blockstate2);
                 }
             }
         }

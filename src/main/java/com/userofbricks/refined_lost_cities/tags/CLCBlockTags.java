@@ -3,6 +3,7 @@ package com.userofbricks.refined_lost_cities.tags;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.foundation.utility.Lang;
 import com.tterrag.registrate.providers.ProviderType;
+import com.userofbricks.refined_lost_cities.worldgen.blocks.CLCBlocks;
 import net.minecraft.data.tags.IntrinsicHolderTagsProvider.IntrinsicTagAppender;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -14,6 +15,11 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 import static com.simibubi.create.AllTags.optionalTag;
 import static com.userofbricks.refined_lost_cities.CreateLostCities.REGISTRATE;
@@ -27,8 +33,7 @@ public enum CLCBlockTags {
     ROTATABLE(LOSTCITIES),
     EASY_BREAKABLE(LOSTCITIES),
     NOT_BREAKABLE(LOSTCITIES),
-    LIGHTS(LOSTCITIES)
-    ;
+    LIGHTS(LOSTCITIES);
 
     public final TagKey<Block> tag;
 
@@ -74,7 +79,6 @@ public enum CLCBlockTags {
     public static void init() {
         REGISTRATE.get().addDataGenerator(ProviderType.BLOCK_TAGS, tagsProvider -> {
             tagsProvider.addTag(GRASS_BLOCKS.tag).add(Blocks.GRASS_BLOCK);
-
 
             //lost cities tags but created completely differently for ease of keeping track of how things work
             tagsProvider.addTag(FOLIAGE.tag).addTags(BlockTags.CORAL_PLANTS, BlockTags.BAMBOO_BLOCKS, BlockTags.LOGS,

@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "half=lower": [
+      {
+        "model": "create_lost_cities:block/overgrown_potatoes"
+      },
+      {
+        "model": "create_lost_cities:block/overgrown_potatoes",
+        "y": 90
+      },
+      {
+        "model": "create_lost_cities:block/overgrown_potatoes",
+        "y": 180
+      },
+      {
+        "model": "create_lost_cities:block/overgrown_potatoes",
+        "y": 270
+      }
+    ],
+    "half=upper": {
+      "model": "create_lost_cities:block/no_model"
+    }
+  }
+}

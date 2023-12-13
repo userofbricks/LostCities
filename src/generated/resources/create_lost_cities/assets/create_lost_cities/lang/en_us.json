@@ -1,3 +1,9 @@
 {
-  "block.create_lost_cities.grass_cover": "Grass Cover"
+  "block.create_lost_cities.grass_cover": "Grass Cover",
+  "block.create_lost_cities.overgrown_beetroots": "Overgrown Beetroots",
+  "block.create_lost_cities.overgrown_carrots": "Overgrown Carrots",
+  "block.create_lost_cities.overgrown_pitcher": "Overgrown Pitcher",
+  "block.create_lost_cities.overgrown_potatoes": "Overgrown Potatoes",
+  "block.create_lost_cities.overgrown_torchflower": "Overgrown Torchflower",
+  "block.create_lost_cities.overgrown_wheat": "Overgrown Wheat"
 }

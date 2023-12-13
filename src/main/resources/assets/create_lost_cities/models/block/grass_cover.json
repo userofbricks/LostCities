@@ -1,5 +1,7 @@
 {
 	"credit": "Made By Userofbricks",
+	"render_type": "minecraft:cutout",
+
 	"textures": {
 		"0": "block/grass_block_side_overlay",
 		"1": "block/grass_block_top",
@@ -37,5 +39,16 @@
 				"south": {"uv": [0, 2, 16, 10], "texture": "#2", "tintindex": 0}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"gui": {
+			"rotation": [30, -154, 0],
+			"scale": [0.625, 0.625, 0.625]
+		}
+	}
 }

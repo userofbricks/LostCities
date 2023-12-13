@@ -19,22 +19,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_1"
     },
     "age=1,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=1,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=1,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=1,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=1,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=1,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_2_var1"
@@ -55,22 +55,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_2_var6"
     },
     "age=2,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=2,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_3_var1"
@@ -91,22 +91,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_3_var6"
     },
     "age=3,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=3,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_4_var1"
@@ -127,22 +127,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_4_var6"
     },
     "age=4,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=4,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_5_var1"
@@ -163,22 +163,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_5_var6"
     },
     "age=5,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=5,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_6_var1"
@@ -199,22 +199,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_6_var6"
     },
     "age=6,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=6,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=lower,variant=1": {
       "model": "create_lost_cities:block/grass/grass_cover_stage_7_var1"
@@ -235,22 +235,22 @@
       "model": "create_lost_cities:block/grass/grass_cover_stage_7_var6"
     },
     "age=7,half=upper,variant=1": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=upper,variant=2": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=upper,variant=3": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=upper,variant=4": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=upper,variant=5": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     },
     "age=7,half=upper,variant=6": {
-      "model": "create_lost_cities:block/grass/grass_cover_upper"
+      "model": "create_lost_cities:block/no_model"
     }
   }
 }

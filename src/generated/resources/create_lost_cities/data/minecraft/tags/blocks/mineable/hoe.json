@@ -1,5 +1,11 @@
 {
   "values": [
-    "create_lost_cities:grass_cover"
+    "create_lost_cities:grass_cover",
+    "create_lost_cities:overgrown_wheat",
+    "create_lost_cities:overgrown_torchflower",
+    "create_lost_cities:overgrown_potatoes",
+    "create_lost_cities:overgrown_carrots",
+    "create_lost_cities:overgrown_beetroots",
+    "create_lost_cities:overgrown_pitcher"
   ]
 }
