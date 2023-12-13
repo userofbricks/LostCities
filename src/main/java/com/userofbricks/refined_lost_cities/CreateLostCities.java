@@ -3,6 +3,7 @@ package com.userofbricks.refined_lost_cities;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import com.userofbricks.refined_lost_cities.init.StructurePoolElementTypeInit;
 import com.userofbricks.refined_lost_cities.tags.CLCBlockTags;
 import com.userofbricks.refined_lost_cities.worldgen.blocks.CLCBlocks;
 import com.userofbricks.refined_lost_cities.events.events.CLCForgeEventHandlers;
@@ -28,6 +29,7 @@ public class CreateLostCities {
         modEventBus.addListener(this::commonSetup);
         CLCBlockTags.init();
         CLCBlocks.loadClass();
+        StructurePoolElementTypeInit.STRUCTURE_POOL_ELEMENT_TYPES.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
