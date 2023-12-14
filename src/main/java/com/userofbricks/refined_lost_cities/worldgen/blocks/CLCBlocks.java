@@ -42,6 +42,11 @@ import java.util.function.Supplier;
 import static com.userofbricks.refined_lost_cities.CreateLostCities.REGISTRATE;
 
 public class CLCBlocks {
+
+    public static final BlockEntry<BuildingGenAirBlock> BUILDING_GEN_LOCATION_BLOCK = REGISTRATE.get().block("building_gen_location", BuildingGenAirBlock::new)
+            .blockstate((ctx, prov) -> {})
+            .loot((rblt, block) -> {})
+            .register();
     public static final BlockEntry<GrassCoverBlock> GRASS_COVER_BLOCK = REGISTRATE.get().block("grass_cover",
                     properties -> new GrassCoverBlock(
                             properties.mapColor(MapColor.GRASS)
